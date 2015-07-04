@@ -19,4 +19,7 @@ remembers failing cases
 Dial down number of runs in dev
 Django support
 
-
+raymond tweet
+forcing you to consider edge cases
+    - valuable for security
+    - consider browser security

@@ -34,7 +34,7 @@ def test_int_float_mod_properties(x, y):
     # tiny x gives result that's equal not less than y
     # >>> (-1e-17 % 1.0) < 1.0
     # False
-    assume(1e-15 < abs(x))
+    assume(1e-13 < abs(x))
     # large y gives result that's equal not less than y
     # >>> abs(1 % -1e16) < abs(-1e16)
     # False

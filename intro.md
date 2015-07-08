@@ -1,4 +1,12 @@
-## Intro
+## Testing with two failure seeking missiles:
+## fuzzing and
+## property based testing
+##### A EuroPython 2015 Talk by @tomviner
+
+---
+
+I'm here to challenge how you test your code
+
 
 Why we test:
 - work out what our code does
@@ -32,6 +40,11 @@ help you generate random input, that homes in on failing testcases.
 
 We don't let developers manually test, why let them choose test inputs?
 Softballing, unimaginitive, non-adversarial
+
+Softball interview
+Aggressive interview
+
+Heat seeking missile (joke)
 
 speed dependent, needs to cover a lot of ground
 

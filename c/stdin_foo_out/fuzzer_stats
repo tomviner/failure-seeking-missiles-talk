@@ -1,0 +1,24 @@
+start_time     : 1436814402
+last_update    : 1436814559
+fuzzer_pid     : 14600
+cycles_done    : 15
+execs_done     : 942849
+execs_per_sec  : 7315.29
+paths_total    : 4
+paths_found    : 3
+paths_imported : 0
+max_depth      : 4
+cur_path       : 3
+pending_favs   : 0
+pending_total  : 0
+variable_paths : 0
+bitmap_cvg     : 0.02%
+unique_crashes : 1
+unique_hangs   : 4
+last_path      : 1436814406
+last_crash     : 1436814408
+last_hang      : 1436814556
+exec_timeout   : 20
+afl_banner     : stdin_foo.afl
+afl_version    : 1.83b
+command_line   : ../afl-1.83b/afl-fuzz -i stdin_foo_in/ -o /run/shm/fuzz/current/ ./stdin_foo.afl

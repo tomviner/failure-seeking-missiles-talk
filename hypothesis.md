@@ -1,10 +1,13 @@
 # QuickCheck
 
+<!-- Note: https://www.fpcomplete.com/user/pbv/an-introduction-to-quickcheck-testing -->
 - Haskell
 - From 1999
 - "Check" properties about your program
 
-Note: https://www.fpcomplete.com/user/pbv/an-introduction-to-quickcheck-testing
+Note: - property based testing
+- you specify a property of your code that must hold
+- frameword does its best to find a counterexample
 
 
 ### QuickCheck quick example
@@ -56,19 +59,21 @@ A Python list reverser:
     def reverse(ls):
         return list(reversed(ls))
 
+Note: works on lists, so we can do `+` like the QuickCheck example
+
 
 The property:
 
     from hypothesis import given
     import hypothesis.strategies as st
 
+    # prop_revapp :: [Int] -> [Int] -> Bool
     @given(
         st.lists(st.integers()),
         st.lists(st.integers()),
     )
     def test_reverse(xs, ys):
         """
-        prop_revapp :: [Int] -> [Int] -> Bool
         prop_revapp xs ys = reverse (xs++ys) == reverse xs ++ reverse ys
         """
         assert reverse(xs + ys) == reverse(xs) + reverse(ys)
@@ -92,9 +97,9 @@ So what's going on here?
 
 How could this be working?
 
-- formal proof - like a mathematical proof?
+- formal proof (symbolic execution / automated theorem prover)?
 <!-- -- class="fragment" -->
-    - nope. Even in maths AI this is cutting edge
+    - nope. Still in the works (for Maths & CompSci)
 <!-- -- class="fragment" -->
 - so that leaves us:
 <!-- -- class="fragment" -->
@@ -105,9 +110,12 @@ How could this be working?
     - wanna see what's going on under the covers?
 <!-- -- class="fragment" -->
 
+Note: - like a mathematical proof
+
 
 All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b7966390e1)
 
+<iframe height=500 width=1000 src=https://cdn.rawgit.com/tomviner/2a37a5e5c9b7966390e1/raw/3d76f52673ebbb662b9fa9a396d0e33be7e987dd/output.txt>
     [206096504910900498493010377380239941762L, 27, 241, 468, 206096504910900498493010366855655511824L, -340, 206096504910900498493010370573292788646L, 6, -188, 206096504910900498493010365575630902925L]
     ...
     [0]
@@ -117,6 +125,10 @@ All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b79
     -------- Hypothesis ---------
     Falsifying example: test_reverse(xs=[0], ys=[1])
     ========= 1 failed in 0.12 seconds ==========
+</iframe>
+
+Note: - big & small numbers
+- shrinking
 
 
 (an aside) Running again:
@@ -146,6 +158,9 @@ All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b79
     Falsifying example: test_reverse(xs=[0], ys=[1])
     ========= 1 failed in 0.11 seconds ==========
 
+Note: it's saved example data locally
+
+---
 
 Overview of what's happening:
 1. generate "random" input data
@@ -186,17 +201,48 @@ Overview of what's happening:
 - find counter example
 - shrink counter example
 
+---
+
+Another example:
+
+![rh-tweet](images/rh-tweet.png)
+
+
+Let's test it!
+
+    from hypothesis import given, assume
+    import hypothesis.strategies as st
+
+    @given(st.integers(), st.integers())
+    def test_int_mod_properties(x, y):
+        # can't divide by 0
+        assume(y != 0)
+
+        result = x % y
+        # result with the same sign as y
+        # and with abs(result) < abs(y)
+        assert same_sign(result, y)
+        assert abs(result) < abs(y)
+
+<!-- . -->
+    $ py.test test_modulo.py
+    1 passed!
+
 
 Here's the steps:
 
 
-property based testing
-    you specify a property of your code that must hold
-    Hypothesis does its best to find a counterexample
-    random = messy and hard to readthedocs
+how does it do it:
+    assume
+    templates:
+        https://hypothesis.readthedocs.org/en/latest/internals.html
+        pick interesting cases
+    database of failing examples
+
+    random = messy and hard to read
     shrinking
 
-
+---
 
 bidict
     basic:
@@ -207,7 +253,8 @@ bidict
 examples:
     bidict
     change counting
-    modulo tweet
+    raymond modulo tweet
+
 
 components:
     strategy
@@ -222,11 +269,7 @@ components:
 
     .example
 
-how does it do it:
-    templates:
-        https://hypothesis.readthedocs.org/en/latest/internals.html
-        pick interesting cases
-    database of failing examples
+
 
 Django
 
@@ -235,11 +278,7 @@ remembers failing cases
 Dial down number of runs in dev
 Django support
 
-raymond tweet
+
 forcing you to consider edge cases
     - valuable for security
     - consider browser security
-
-
-
-## Conclusion

@@ -9,6 +9,15 @@ Note: - Moving on from *property based testing*
 - Generic failures
 
 
+## Workflow
+
+- leave running (for days or weeks)
+- speed very important
+
+Note: - needs to cover a lot of ground
+
+---
+
 ## American fuzzy lop
 
 ![afl-rabbit](images/rabbit.jpg)
@@ -56,6 +65,16 @@ Note: - lots of memory mgmt bugs
     - self-managed for speed
 - 100 to 200 zero-day exploits!
 
+---
+
+## AFL's goals
+
+- Speed
+- Reliability
+- Simplicity (little setup required)
+- Traditional fuzzing techniques: input mutation strategies
+- Plus...
+
 
 ## AFL's secret
 
@@ -66,6 +85,9 @@ Note: - lots of memory mgmt bugs
     $ CC=/path/to/afl/afl-gcc ./configure
     $ make
 
+Note: - maps out networks of code paths
+
+---
 
 ## Toy example
 
@@ -84,7 +106,8 @@ Crash upon *foo!*
 
 ## Manual test of fail
 
-    afl-gcc -o stdin_foo.afl stdin_foo.c
+    # compile adding instrumentation
+    $ afl-gcc -o stdin_foo.afl stdin_foo.c
 
     $ echo "foo!" | ./stdin_foo.afl
     one
@@ -98,19 +121,73 @@ Note: - no configure or make, just compile
 
 Let's try it:
 
-    afl-fuzz -i testcase_dir -o findings_dir ./stdin_foo.afl
+    $ afl-fuzz -i testcase_dir -o findings_dir ./stdin_foo.afl
 
 Note: - really basic example in testcase_dir
+- stdin or filename
+- use RAM disk if SSD
 
 
 Running:
 
 ![afl-running](images/foo.png)
 
+Note: - total paths / uniq crashes
+- fuzzing strategy yields
+- almost a million runs in 2.5 minutes
+
+
+## Findings
+
+`queue/`:
+- `.`
+- `fýç↡`
+- `foý↡`
+- `fooÿ`
+
+`crashes/`:
+- `foo!`
+
+Note: numbered files
+
+
+Filename:
+
+    crashes/id:000000,sig:06,src:000003,op:arith8,pos:3,val:+34
+
+- `sig:06`: SIGABRT (Abort signal)
+- based on `queue/000003` (`fooÿ`)
+- operation: 8-bit arithmetics
+- position 3, value +34
+
+
+## impressive trophy case of bug discoveries
+
+![afl-bugs](images/afl-bugs.png)
+
+Note: - that's only about a third of them!
+
+---
+
+<!-- http://lcamtuf.blogspot.co.uk/2015/04/finding-bugs-in-sqlite-easy-way.html -->
+## Specific example: sql bugs found
+
+
+## Approach
+
+- dictionary of SQL keywords
+    - `ALTER, SELECT, COLUMN` etc
+- a single simple testcase:
+
+<!-- . -->
+    create table t1(one smallint);
+    insert into t1 values(1);
+    select * from t1;
+
+---
 
 code coverage - value coverage
 choosing values to increase code coverage!
-speed very important
 timeout (hangs), default 5*average
 
 features:

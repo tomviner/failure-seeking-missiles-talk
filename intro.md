@@ -5,6 +5,10 @@
 
 ---
 
+Audience starting point?
+- done unittesting, integration testing, end-to-end
+- always with hard coded values
+
 I ask you:
 - are you testing your code hard enough?
 - stretching it?
@@ -13,7 +17,6 @@ I ask you:
 
 
 I'm here to challenge how you test your code
-
 
 
 Why we test:
@@ -29,6 +32,10 @@ How we test:
 - test by firing a failure seeking missile???
 
 [missile image]
+
+Getting the balance right:
+- native wide, shallow progress
+- mutate too conservatively: less novel outcomes
 
 Bug space
 - Map of all the different types of bugs

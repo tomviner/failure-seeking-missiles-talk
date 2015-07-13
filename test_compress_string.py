@@ -64,6 +64,8 @@ class TestCompress(object):
         assert_equal(func('AAABCCDDDD'), 'A3B1C2D4')
         print('Success: test_compress')
 
+# integers().map(text(alphabet=string.upper), lambda n, x: n*x)
+
 def main():
     test = TestCompress()
     test.test_compress()

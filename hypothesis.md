@@ -7,7 +7,6 @@
 Note: https://www.fpcomplete.com/user/pbv/an-introduction-to-quickcheck-testing
 
 
-
 ### QuickCheck quick example
 
     import Test.QuickCheck
@@ -17,6 +16,9 @@ Note: https://www.fpcomplete.com/user/pbv/an-introduction-to-quickcheck-testing
 
     main = quickCheck prop_revapp
 
+
+![quickcheck-example](images/quickcheck.png)
+
 Note: this isn't PyHaskellConUK, so let's not accidentally learn Haskell!
 
 Instead...
@@ -24,7 +26,7 @@ Instead...
 
 Let's hear what functional language developers think of our world
 
-![dognap](https://s3.amazonaws.com/lyah/dognap.png)
+![dognap](images/dognap.png)
 
 ([from *learn you a haskell*](http://learnyouahaskell.com/input-and-output))
 

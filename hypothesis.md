@@ -228,19 +228,17 @@ Let's test it!
     $ py.test test_modulo.py
     1 passed!
 
+Note: - `assume` provides feedback to the random input
 
-Here's the steps:
 
 
 how does it do it:
-    assume
     templates:
         https://hypothesis.readthedocs.org/en/latest/internals.html
         pick interesting cases
+        random = messy and hard to read
+        shrinking
     database of failing examples
-
-    random = messy and hard to read
-    shrinking
 
 ---
 

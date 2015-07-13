@@ -20,10 +20,9 @@ def test_type_returned(func, total):
     assert isinstance(coins, list)
 
 @against_all_version
-@given(st.integers())
-def test_sum(func, total):
-    assume(0 <= total <= 999999)
-    coins = func(total)
+@given(st.integers(min_value=0, max_value=999999))
+def test_sum(total):
+    coins = make_change(total)
     assert sum(coins) == total
 
 # amended from https://docs.python.org/2/library/itertools.html#recipes
@@ -36,9 +35,8 @@ def powerset(iterable, min_len):
 
 # @against_all_version
 func = change_count.make_change_v3
-@given(st.integers())
+@given(st.integers(min_value=0, max_value=999))
 def test_minimal_choice(total):
-    assume(0 <= total <= 999)
     coins = func(total)
     for subset in powerset(coins, min_len=2):
         assert sum(subset) not in change_count.COINS

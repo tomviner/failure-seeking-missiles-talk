@@ -5,7 +5,15 @@
 
 ---
 
+I ask you:
+- are you testing your code hard enough?
+- stretching it?
+- asking it question it wasn't expecting?
+- are you a softball interviewer?
+
+
 I'm here to challenge how you test your code
+
 
 
 Why we test:

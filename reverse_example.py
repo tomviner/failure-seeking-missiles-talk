@@ -16,6 +16,7 @@ def test_reverse(xs, ys):
     """
     print xs
     print ys
+    print reverse(xs + ys) == reverse(xs) + reverse(ys)
     print
     assert reverse(xs + ys) == reverse(xs) + reverse(ys)
 

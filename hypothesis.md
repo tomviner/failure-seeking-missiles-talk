@@ -1,31 +1,192 @@
 # QuickCheck
 
-From 1999
-https://www.fpcomplete.com/user/pbv/an-introduction-to-quickcheck-testing
+- Haskell
+- From 1999
+- "Check" properties about your program
 
-Imperative programming to a haskell person is like this:
-![dognap][https://s3.amazonaws.com/lyah/dognap.png] ([src](http://learnyouahaskell.com/input-and-output))
+Note: https://www.fpcomplete.com/user/pbv/an-introduction-to-quickcheck-testing
 
-From http://learnyouahaskell.com/input-and-output:
 
-"In an imperative language, you have no guarantee that a simple function that should just crunch some numbers won't burn down your house, kidnap your dog and scratch your car with a potato while crunching those numbers.""
 
-# Hypothosis
+### QuickCheck quick example
+
+    import Test.QuickCheck
+
+    prop_revapp :: [Int] -> [Int] -> Bool
+    prop_revapp xs ys = reverse (xs++ys) == reverse xs ++ reverse ys
+
+    main = quickCheck prop_revapp
+
+Note: this isn't PyHaskellConUK, so let's not accidentally learn Haskell!
+
+Instead...
+
+
+Let's hear what functional language developers think of our world
+
+![dognap](https://s3.amazonaws.com/lyah/dognap.png)
+
+([from *learn you a haskell*](http://learnyouahaskell.com/input-and-output))
+
+Note: *In an imperative language, you have no guarantee that a simple function that should just crunch some numbers won't burn down your house, kidnap your dog and scratch your car with a potato while crunching those numbers*
+
+---
+
+# Hypothesis
 
 Pythonic implementation and update of QuickCheck
 
-## Hypothesis
+Note: Let's delve into the kidnapped dog world of Python
 
-bidict
-    basic:
-        [code]
-    advanced:
-        Rule based state machines
 
-how could this be working?
-    formal proof - like a mathematical proof
-        even in maths this is cutting edge
-    so that leaves us: trying a load of examples
+Let's rewrite this in Hypothesis:
+
+    import Test.QuickCheck
+
+    prop_revapp :: [Int] -> [Int] -> Bool
+    prop_revapp xs ys = reverse (xs++ys) == reverse xs ++ reverse ys
+
+    main = quickCheck prop_revapp
+
+
+A Python list reverser:
+
+    def reverse(ls):
+        return list(reversed(ls))
+
+
+The property:
+
+    from hypothesis import given
+    import hypothesis.strategies as st
+
+    @given(
+        st.lists(st.integers()),
+        st.lists(st.integers()),
+    )
+    def test_reverse(xs, ys):
+        """
+        prop_revapp :: [Int] -> [Int] -> Bool
+        prop_revapp xs ys = reverse (xs++ys) == reverse xs ++ reverse ys
+        """
+        assert reverse(xs + ys) == reverse(xs) + reverse(ys)
+
+
+Result:
+    >       assert reverse(xs + ys) == reverse(xs) + reverse(ys)
+    E       assert [1, 0] == [0, 1]
+
+    reverse_example.py:21: AssertionError
+    -------- Hypothesis --------
+    Falsifying example: test_reverse(xs=[0], ys=[1])
+
+Note: - with `py.test` as runner
+- The proposition is False!
+- Counter example to prove it
+
+
+So what's going on here?
+
+
+How could this be working?
+
+- formal proof - like a mathematical proof?
+<!-- -- class="fragment" -->
+    - nope. Even in maths AI this is cutting edge
+<!-- -- class="fragment" -->
+- so that leaves us:
+<!-- -- class="fragment" -->
+    - trying a crud-ton of examples
+<!-- -- class="fragment" -->
+    - but does this even scale???
+<!-- -- class="fragment" -->
+    - wanna see what's going on under the covers?
+<!-- -- class="fragment" -->
+
+
+All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b7966390e1)
+
+    [206096504910900498493010377380239941762L, 27, 241, 468, 206096504910900498493010366855655511824L, -340, 206096504910900498493010370573292788646L, 6, -188, 206096504910900498493010365575630902925L]
+    ...
+    [0]
+    [1]
+    False
+
+    -------- Hypothesis ---------
+    Falsifying example: test_reverse(xs=[0], ys=[1])
+    ========= 1 failed in 0.12 seconds ==========
+
+
+(an aside) Running again:
+
+<!-- <pre style="height: 500px; overflow:scroll; word-wrap: break-word; white-space: pre-wrap;"> -->
+    [0]
+    [1]
+    False
+
+    []
+    [1]
+    True
+
+    [0]
+    []
+    True
+
+    [0]
+    [0]
+    True
+
+    [0]
+    [1]
+    False
+
+    -------- Hypothesis ---------
+    Falsifying example: test_reverse(xs=[0], ys=[1])
+    ========= 1 failed in 0.11 seconds ==========
+
+
+Overview of what's happening:
+1. generate "random" input data
+1. run test **repeatedly**
+1. find counter example (or not)
+1. *shrink* counter example
+
+
+Is the data really random?
+
+Where did all those integers come from?
+<!-- -- class="fragment" -->
+
+
+Hypothesis decorator:
+
+    @given(
+        st.lists(st.integers()),
+        st.lists(st.integers()),
+    )
+    def test_reverse(xs, ys):
+
+
+Hypothesis strategies:
+
+    >>> import hypothesis.strategies as st
+    >>> st.integers()
+    RandomGeometricIntStrategy() | WideRangeIntStrategy()
+
+Note: a battle plan to destroy your program
+
+
+Overview of what's happening:
+- random seed
+- stategic random input data
+- run test repeatedly
+- use feedback
+- find counter example
+- shrink counter example
+
+
+Here's the steps:
+
 
 property based testing
     you specify a property of your code that must hold
@@ -33,7 +194,16 @@ property based testing
     random = messy and hard to readthedocs
     shrinking
 
+
+
+bidict
+    basic:
+        [code]
+    advanced:
+        Rule based state machines
+
 examples:
+    bidict
     change counting
     modulo tweet
 

@@ -3,7 +3,7 @@ import hypothesis.strategies as st
 
 from hypothesis.settings import Settings
 
-Settings.max_examples = 999999
+# Settings.max_examples = 999999
 
 @given(st.integers())
 def two_is_bad(n):

@@ -24,7 +24,7 @@ Note: property based testing
 
 Note: - 4 integers / fingers
 - arms snap off?
-- this isn't PyHaskellConUK, so let's not accidentally learn Haskell!
+- this isn't EuroHaskellMonadCon, so let's not accidentally learn Haskell!
 
 Instead...
 

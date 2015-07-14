@@ -1,3 +1,19 @@
+feedback:
+
+less haskell
+AFL
+    isn't Python
+    specialises in security and binary formats
+Notes were distracting me
+Genetic Algorthm implies search and time
+Agile Test Quadrant
+Strateies as probability distributions
+
+More jokes
+
+
+todo:
+
 exhaustive
 testing like your
 thinking at the edges

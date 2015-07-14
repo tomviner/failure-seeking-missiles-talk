@@ -21,61 +21,47 @@ I ask you:
 
 Note: - stretching it?
 - asking it questions it wasn't expecting?
-- are you a softball interviewer?
+- are you an aggressive interviewer?
+- or are you a softball interviewer who asks easy questions?
 
 
 ## Coverage
 - code coverage
     - line
     - branch
-    - loop count
+    - loop counts
 - value coverage?
 <!-- -- class="fragment" -->
 
 
-Why we test:
-- work out what our code does
-- ensure it doesn't do anything else
-- define its properties
-- ensure it meets its contracts
-
-
-How we test:
-- run the code
-- manually interact
-- test by passing in hardcoded values
-- test by firing a failure seeking missile???
-<!-- -- class="fragment" -->
-
-[missile image]
-
-
 ## Input space
-- Map of all the different types of bugs
-- Thorough testing (over the whole dev life cycle) is about reaching as many parts of input space as possible
-- Risk of over testing certain parts of input space, and under testing others e.g.
-    - testing text inputs with ascii instead of unicode
+
+![graph](images/graph.jpg)
+- Map of all possible inputs
+- All data related bugs have a point on here
+
+Note: - which type of points do you pick when testing?
+- where would adversarial approach take you?
+
+
+## Artist's reconstruction of edge cases
+![shamrock](images/shamrock.png)
+
+Note: - reaching as many parts of input space as possible
+- over testing simple cases
+- under testing
+    - ascii instead of unicode
+    - empty list / strings
     - passing low positive integers, when large / negative / floats would find extra bugs
 
 
-Sketch
-can't draw a diagram of all the problems with *this* (funny photo)
+## So how to create test data?
 
-
-model mommy: non-adversarial data. literally randint(-10000, 10000)
-
-
-Testing with purely random data on it's own doesn't get you very far. But
-two approaches that have been around for a while have new libraries that
-help you generate random input, that homes in on failing testcases.
-
-
-We don't let developers manually test, why let them choose test inputs?
-Softballing, unimaginitive, non-adversarial
-
-
-Softball interview
-Aggressive interview
-
-
-Heat seeking missile (joke)
+- hand write hardcoded values
+<!-- -- class="fragment" -->
+- import random or model_mommy
+<!-- -- class="fragment" -->
+- OR... by firing a failure seeking missile???
+<!-- -- class="fragment" -->
+![missile](images/missile.jpg)
+<!-- -- class="fragment" -->

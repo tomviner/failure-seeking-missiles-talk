@@ -6,7 +6,7 @@
     - memory leaks
 
 Note: - Moving on from *property based testing*
-- Generic failures
+- More about crashes than checking properties
 
 
 ## Workflow
@@ -60,9 +60,11 @@ Note: - video processing lib
 - Assertion failures
 
 *Our personal feeling is between 10% and 20% of the problems could be considered easily exploitable security issues*
+<!-- -- class="fragment" -->
 
 Note: - lots of memory mgmt bugs
     - self-managed for speed
+- (next)
 - 100 to 200 zero-day exploits!
 
 ---
@@ -103,6 +105,8 @@ Crash upon *foo!*
             abort();
     }}}}
 
+Note: - so the bug is that "foo!" crashes the program
+
 
 ## Manual test of fail
 
@@ -123,7 +127,7 @@ Let's try it:
 
     $ afl-fuzz -i testcase_dir -o findings_dir ./stdin_foo.afl
 
-Note: - really basic example in testcase_dir
+Note: - really basic example in testcase_dir "."
 - stdin or filename
 - use RAM disk if SSD
 
@@ -170,10 +174,12 @@ Note: - that's only about a third of them!
 ---
 
 <!-- http://lcamtuf.blogspot.co.uk/2015/04/finding-bugs-in-sqlite-easy-way.html -->
-## Specific example: sql bugs found
+## Specific example: sqlite bugs found
+
+Note: - sqlite is a very well testing and already fuzzed library
 
 
-## Approach
+## Approach 1
 
 - dictionary of SQL keywords
     - `ALTER, SELECT, COLUMN` etc
@@ -184,31 +190,32 @@ Note: - that's only about a third of them!
     insert into t1 values(1);
     select * from t1;
 
+- *netted a decent number of interesting finds*
+
+
+## Approach 2
+
+- dictionary of SQL keywords
+    - `ALTER, SELECT, COLUMN` etc
+- grepped out sqlite hand-written test cases
+- found 22 crashing test cases
+
+<!-- . -->
+    select(select strftime());
+
+
+## How it works
+
+- be a great traditional fuzzer
+- search for inputs that span different code paths
+- genetic algorithms for mashing examples together
+
+
 ---
 
-code coverage - value coverage
-choosing values to increase code coverage!
-timeout (hangs), default 5*average
+## Python AFL
 
-features:
+- Connects instrumentation to Python interpreter
+- More about Python AFL in Bilbao
+    - Slides not written yet
 
-    gnuplot
-    dictionary of input keywords
-    crash explorer
-    minimise result
-
-how it works:
-    genetic algorithms
-
-usage:
-    stdin or filename
-    fuzzing by script
-
-sql bugs found
-
-265 w:
-    took 11 mins
-    total execs: 3M (10^6)
-    dumb search: 10^440
-    http://manpages.ubuntu.com/manpages/hardy/man7/signal.7.html
-    SIGFPE        8       Core    Floating point exception

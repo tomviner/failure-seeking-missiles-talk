@@ -96,14 +96,14 @@ Note: - The proposition is False!
 - Counter example to prove it
 
 
-So what's going on here?
+## So what's going on here?
 
 
-How could this be working?
+## How could this be working?
 
 - formal proof (symbolic execution / automated theorem prover)?
 <!-- -- class="fragment" -->
-    - nope. Still in the works (for [Maths](http://www.wired.com/2015/05/will-computers-redefine-roots-math/) & CompSci)
+    - nope. Still in the works (for Maths & CompSci)
 <!-- -- class="fragment" -->
 - so that leaves us:
 <!-- -- class="fragment" -->
@@ -114,6 +114,7 @@ How could this be working?
 
 Note: - like a mathematical proof
 - Math programmers still arguing over whether 0.5 == 1/2 from 1st principles
+- [src](http://www.wired.com/2015/05/will-computers-redefine-roots-math/)
 
 
 All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b7966390e1)
@@ -212,6 +213,8 @@ Another example:
 
 ![rh-tweet](images/rh-tweet.png)
 
+Note: - remainder
+
 
 Let's test it!
 
@@ -232,56 +235,49 @@ Let's test it!
 <!-- . -->
     $ py.test test_modulo.py
     1 passed!
+<!-- -- class="fragment" -->
 
-Note: - `assume` provides feedback to the random input
-
-
-
-how does it do it:
-    templates:
-        https://hypothesis.readthedocs.org/en/latest/internals.html
-        pick interesting cases
-        random = messy and hard to read
-        shrinking
-    database of failing examples
-
----
-
-bidict
-    basic:
-        [code]
-    advanced:
-        Rule based state machines
-
-examples:
-    bidict
-    change counting
-    raymond modulo tweet
+Note: - 2 ints
+- `assume` provides feedback to the random input, guiding its
+- (next)
+- I should know better than questioning Raymond Hettinger
+- But I can and will Property Test his tweets!
 
 
-components:
-    strategy
-        >>> import hypothesis.strategies as st
-        >>> st.integers()
-        RandomGeometricIntStrategy() | WideRangeIntStrategy()
-        >>> st.floats()
-        WrapperFloatStrategy(GaussianFloatStrategy() | BoundedFloatStrategy() | ExponentialFloatStrategy() | JustIntFloats() | SampledFromStrategy(
-        (0.0, sys.float_info.min, -sys.float_info.min, -sys.float_info.max,
-        sys.float_info.max,, inf, -inf, nan)) | FullRangeFloats())
-        NastyFloats
+## How does it do it?
+- data strategies for interesting cases
+<!-- -- class="fragment" -->
+- guided feedback via assume
+<!-- -- class="fragment" -->
+- shrinking of counterexamples
+<!-- -- class="fragment" -->
+- database of failing examples
+<!-- -- class="fragment" -->
 
-    .example
-
+Note: - internals are really interesting - [templates](https://hypothesis.readthedocs.org/en/latest/internals.html)
 
 
-Django
+One more strategy:
 
-Reruns test many times
-remembers failing cases
-Dial down number of runs in dev
-Django support
+    >>> import hypothesis.strategies as st
+
+    >>> st.integers()
+    RandomGeometricIntStrategy() | WideRangeIntStrategy()
+
+    >>> st.floats()
+    GaussianFloatStrategy() | BoundedFloatStrategy() |
+    ExponentialFloatStrategy() | JustIntFloats() |
+    NastyFloats() | FullRangeFloats()
+
+    >>> NastyFloats
+    0.0, inf, -inf, nan
+    sys.float_info.min, -sys.float_info.min,
+    sys.float_info.max, -sys.float_info.max
 
 
-forcing you to consider edge cases
-    - valuable for security
-    - consider browser security
+Let's look at another failure seeking missile
+
+![attention](images/attention-s.png)
+<!-- -- class="fragment" -->
+
+Note: - it's a missile that's getting... a lot of attention

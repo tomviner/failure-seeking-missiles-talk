@@ -1,0 +1,9 @@
+body.debug-notes .reveal aside.notes {
+    display: block;
+    font-size: smaller;
+    font-style: italic;
+    color: #999;
+}
+body.debug-notes .reveal aside.notes::before {
+    content: " --- ";
+}

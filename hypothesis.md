@@ -1,13 +1,14 @@
 # QuickCheck
 
-<!-- Note: https://www.fpcomplete.com/user/pbv/an-introduction-to-quickcheck-testing -->
+<!-- https://www.fpcomplete.com/user/pbv/an-introduction-to-quickcheck-testing -->
 - Haskell
 - From 1999
-- "Check" properties about your program
+- Property based testing
 
-Note: - property based testing
+Note: property based testing
 - you specify a property of your code that must hold
-- frameword does its best to find a counterexample
+- QuickCheck will "Quickly Check" if it can prove you wrong
+- framework does its best to find a counterexample
 
 
 ### QuickCheck quick example
@@ -19,10 +20,11 @@ Note: - property based testing
 
     main = quickCheck prop_revapp
 
-
 ![quickcheck-example](images/quickcheck.png)
 
-Note: this isn't PyHaskellConUK, so let's not accidentally learn Haskell!
+Note: - 4 integers / fingers
+- arms snap off?
+- this isn't PyHaskellConUK, so let's not accidentally learn Haskell!
 
 Instead...
 
@@ -78,6 +80,9 @@ The property:
         """
         assert reverse(xs + ys) == reverse(xs) + reverse(ys)
 
+Note: - ok so let's run it
+- using `py.test` as runner
+
 
 Result:
     >       assert reverse(xs + ys) == reverse(xs) + reverse(ys)
@@ -87,8 +92,7 @@ Result:
     -------- Hypothesis --------
     Falsifying example: test_reverse(xs=[0], ys=[1])
 
-Note: - with `py.test` as runner
-- The proposition is False!
+Note: - The proposition is False!
 - Counter example to prove it
 
 
@@ -99,18 +103,17 @@ How could this be working?
 
 - formal proof (symbolic execution / automated theorem prover)?
 <!-- -- class="fragment" -->
-    - nope. Still in the works (for Maths & CompSci)
+    - nope. Still in the works (for [Maths](http://www.wired.com/2015/05/will-computers-redefine-roots-math/) & CompSci)
 <!-- -- class="fragment" -->
 - so that leaves us:
 <!-- -- class="fragment" -->
     - trying a crud-ton of examples
 <!-- -- class="fragment" -->
-    - but does this even scale???
-<!-- -- class="fragment" -->
     - wanna see what's going on under the covers?
 <!-- -- class="fragment" -->
 
 Note: - like a mathematical proof
+- Math programmers still arguing over whether 0.5 == 1/2 from 1st principles
 
 
 All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b7966390e1)
@@ -128,7 +131,9 @@ All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b79
 </iframe>
 
 Note: - big & small numbers
-- shrinking
+- slowly shrinking
+- too simple: hits examples that actually pass
+- an example for the scrapbook: your usual testsuite
 
 
 (an aside) Running again:
@@ -192,7 +197,7 @@ Hypothesis strategies:
 
 Note: a battle plan to destroy your program
 
-
+<!--
 Overview of what's happening:
 - random seed
 - stategic random input data
@@ -200,7 +205,7 @@ Overview of what's happening:
 - use feedback
 - find counter example
 - shrink counter example
-
+ -->
 ---
 
 Another example:

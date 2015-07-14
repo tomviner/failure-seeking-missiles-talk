@@ -9,8 +9,8 @@ I'm here to challenge how you test your code
 
 
 Audience starting point?
-- done unittesting / integration testing / end-to-end
-- but always with hard coded values?
+- you've written tests...
+- but always with hard coded example values?
 
 Note: - who's only used hard coded values?
 - who's used some form of random data
@@ -18,7 +18,8 @@ Note: - who's only used hard coded values?
 
 I ask you:
 - are you testing your code hard enough?
-- stretching it?
+
+Note: - stretching it?
 - asking it questions it wasn't expecting?
 - are you a softball interviewer?
 
@@ -27,7 +28,9 @@ I ask you:
 - code coverage
     - line
     - branch
+    - loop count
 - value coverage?
+<!-- -- class="fragment" -->
 
 
 Why we test:
@@ -42,14 +45,15 @@ How we test:
 - manually interact
 - test by passing in hardcoded values
 - test by firing a failure seeking missile???
+<!-- -- class="fragment" -->
 
 [missile image]
 
 
-## Bug space
+## Input space
 - Map of all the different types of bugs
-- Thorough testing (over the whole dev life cycle) is about reaching as many parts of bugspace as possible
-- Risk of over testing certain parts of bugspace, and under testing others e.g.
+- Thorough testing (over the whole dev life cycle) is about reaching as many parts of input space as possible
+- Risk of over testing certain parts of input space, and under testing others e.g.
     - testing text inputs with ascii instead of unicode
     - passing low positive integers, when large / negative / floats would find extra bugs
 

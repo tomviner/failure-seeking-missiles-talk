@@ -25,7 +25,13 @@ Note: - stretching it?
 - or are you a softball interviewer who asks easy questions?
 
 
+![interview](images/interview.png)
+
+
 ## Coverage
+
+![interview](images/interview.png)
+
 - code coverage
     - line
     - branch

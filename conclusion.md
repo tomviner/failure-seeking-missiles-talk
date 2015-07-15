@@ -6,7 +6,7 @@
 <!-- -- class="fragment" -->
 - Con: find more bugs!
 <!-- -- class="fragment" -->
-- Legitimate debate
+- Find failing cases and add them to your deterministic test pack
 <!-- -- class="fragment" -->
 
 
@@ -25,6 +25,8 @@
 
 ## In Conclusion
 
+We've seen two styles of coming up with test data today
+
 - Humans are bad at picking random examples
 <!-- -- class="fragment" -->
 - Developers are bad at being adversarial
@@ -33,14 +35,12 @@
 <!-- -- class="fragment" -->
 - Find the bugs before your customer/secret service does
 <!-- -- class="fragment" -->
-- Find failing cases and add them to your deterministic test pack
-<!-- -- class="fragment" -->
 
 
 ## Let me end by saying
 
 Note: - Don't interrogate your code like it's a cat stuck up a tree...
-- Fire a guided missile and blow fucking tree up and clear up the mess!
+- Fire a guided missile, blow the fucking tree up and clear up the mess!
 
 
 ![ray-hyp](images/ray-hyp.png)

@@ -240,7 +240,7 @@ Let's test it!
 Note: - 2 ints
 - `assume` provides feedback to the random input, guiding its
 - (next)
-- I should know better than questioning Raymond Hettinger
+- I should know better than doubting Raymond Hettinger
 - But I can and will Property Test his tweets!
 
 

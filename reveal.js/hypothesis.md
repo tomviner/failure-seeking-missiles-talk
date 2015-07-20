@@ -202,7 +202,7 @@ Another example:
 
 ![rh-tweet](images/rh-tweet.png)
 
-Note: - remainder
+Note: - *raymainder*
 
 
 Let's test it!
@@ -234,7 +234,7 @@ Note: - 2 ints
 
 
 ## How does it do it?
-- data strategies aka probability distributions for interesting cases
+- data strategies aka probability distributions
 <!-- -- class="fragment" -->
 - guided feedback via assume
 <!-- -- class="fragment" -->

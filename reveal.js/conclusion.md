@@ -39,8 +39,8 @@ We've seen two styles of coming up with test data today
 
 ## Let me end by saying
 
-Note: - Don't interrogate your code like it's a cat stuck up a tree...
-- Fire a guided missile, blow the fucking tree up and clear up the mess!
+Note: - Don't interrogate your code like it's a fluffy bunny stuck up a tree...
+- Fire a guided missile, try to blow branches off the tree up and clear up the mess!
 
 
 ![ray-hyp](images/ray-hyp.png)
@@ -48,8 +48,10 @@ Note: - Don't interrogate your code like it's a cat stuck up a tree...
 Note: - celeb endorsement
 
 
-Other talks you may find interesting:
-- Hypothesis talk by someone else
+Also of interest:
+- What's The Fuzz All About? Randomized Data Generation For Robust Unit Testing
+- By Moritz Gronbach
+- Directly after this talk in this room
 
 
 Thanks to my company for sponsoring my conference trip!

@@ -1,3 +1,10 @@
+"""
+http://nbviewer.ipython.org/github/donnemartin/interactive-coding-challenges/
+    blob/master/arrays_strings/compress/compress_challenge.ipynb
+http://nbviewer.ipython.org/github/donnemartin/interactive-coding-challenges/
+    blob/master/arrays_strings/compress/compress_solution.ipynb
+"""
+
 import re
 import pytest
 from nose.tools import assert_equal

@@ -1,3 +1,7 @@
+Choosing data, examples
+Depth of progression
+Filtered out
+
 feedback:
 
 less haskell

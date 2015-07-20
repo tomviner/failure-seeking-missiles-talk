@@ -45,6 +45,8 @@ Note: - Don't interrogate your code like it's a cat stuck up a tree...
 
 ![ray-hyp](images/ray-hyp.png)
 
+Note: - celeb endorsement
+
 
 Other talks you may find interesting:
 - Hypothesis talk by someone else

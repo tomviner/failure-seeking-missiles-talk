@@ -1,6 +1,7 @@
 Choosing data, examples
 Depth of progression
 Filtered out
+randomesque
 
 feedback:
 
@@ -11,7 +12,7 @@ AFL
 Notes were distracting me
 Genetic Algorthm implies search and time
 Agile Test Quadrant
-Strateies as probability distributions
+Strategies as probability distributions
 
 More jokes
 

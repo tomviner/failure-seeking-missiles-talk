@@ -69,14 +69,13 @@ The property:
     from hypothesis import given
     import hypothesis.strategies as st
 
-    # prop_revapp :: [Int] -> [Int] -> Bool
     @given(
         st.lists(st.integers()),
         st.lists(st.integers()),
     )
     def test_reverse(xs, ys):
         """
-        prop_revapp xs ys = reverse (xs++ys) == reverse xs ++ reverse ys
+        join then reverse - v - reverse then join
         """
         assert reverse(xs + ys) == reverse(xs) + reverse(ys)
 
@@ -133,13 +132,12 @@ All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b79
 
 Note: - big & small numbers
 - slowly shrinking
-- too simple: hits examples that actually pass
+- overshoots: hits examples that actually pass
 - an example for the scrapbook: your usual testsuite
 
 
 (an aside) Running again:
 
-<!-- <pre style="height: 500px; overflow:scroll; word-wrap: break-word; white-space: pre-wrap;"> -->
     [0]
     [1]
     False
@@ -169,7 +167,7 @@ Note: it's saved example data locally
 ---
 
 Overview of what's happening:
-1. generate "random" input data
+1. generate "randomesque" input data
 1. run test **repeatedly**
 1. find counter example (or not)
 1. *shrink* counter example
@@ -196,17 +194,8 @@ Hypothesis strategies:
     >>> st.integers()
     RandomGeometricIntStrategy() | WideRangeIntStrategy()
 
-Note: a battle plan to destroy your program
+Note: a battle plan to break your program
 
-<!--
-Overview of what's happening:
-- random seed
-- stategic random input data
-- run test repeatedly
-- use feedback
-- find counter example
-- shrink counter example
- -->
 ---
 
 Another example:
@@ -238,14 +227,14 @@ Let's test it!
 <!-- -- class="fragment" -->
 
 Note: - 2 ints
-- `assume` provides feedback to the random input, guiding its
+- `assume` provides feedback to the random input, guiding it
 - (next)
 - I should know better than doubting Raymond Hettinger
 - But I can and will Property Test his tweets!
 
 
 ## How does it do it?
-- data strategies for interesting cases
+- data strategies aka probability distributions for interesting cases
 <!-- -- class="fragment" -->
 - guided feedback via assume
 <!-- -- class="fragment" -->

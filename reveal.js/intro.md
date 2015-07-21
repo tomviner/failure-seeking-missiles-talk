@@ -35,8 +35,10 @@ Note: - stretching it?
 - code coverage
     - line
     - branch
-    - loop counts
-- value coverage?
+- path coverage
+    - linearly independent paths
+    - cyclomatic complexity
+
 <!-- -- class="fragment" -->
 
 

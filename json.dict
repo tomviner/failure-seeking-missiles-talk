@@ -1,0 +1,16 @@
+#
+# AFL dictionary for JSON
+# -----------------------
+#
+misc_1=" 1"
+misc_array=" [1]"
+misc_colon_num=" 1:"
+misc_colon_string=" \"qwerty\":"
+misc_comma=" ,"
+misc_parentheses_1=" (1)"
+misc_parentheses_1x4=" (1,1,1,1)"
+misc_semicolon=" ;"
+misc_colon=" :"
+misc_serialized_object=" {\"ytrewq\": 1}"
+misc_string=" \"a\" "
+misc_unicode=" "\\u0001\""

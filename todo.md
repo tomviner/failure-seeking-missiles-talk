@@ -1,7 +1,15 @@
+Todo:
+
+Python-AFL
+Fuzzing JSON
+Maze
+    Depth of progression
+    Filtered out
+Add photo
+
+Rest:
+
 Choosing data, examples
-Depth of progression
-Filtered out
-randomesque
 
 feedback:
 
@@ -19,6 +27,7 @@ More jokes
 
 todo:
 
+randomesque
 exhaustive
 testing like your
 thinking at the edges

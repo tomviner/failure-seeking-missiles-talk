@@ -21,19 +21,18 @@ Note: - needs to cover a lot of ground
 ## American fuzzy lop
 
 ![afl-rabbit](images/rabbit.jpg)
-- By Michal Zalewski
+
+- Michal Zalewski - 2014
+- Written in C
 
 Note: - bunny-the-fuzzer from 2007
-- Released 2014
-- Written in C
+- specialises in security and binary formats
 
 
 ## Types of Fuzz Testing
 
 - traditional "brute-force"
 - AFL: feedback guided fuzzing
-
-<!-- Note: -->
 
 
 ## Traditional fuzzing isn't dead
@@ -52,20 +51,18 @@ Note: - video processing lib
 
 ## Types of bugs found
 
-- NULL pointer dereferences
-- Invalid pointer arithmetic
-- Out-of-bounds reads and writes
-- Use of uninitialized memory
+- Memory management bugs:
+    - NULL pointer dereferences
+    - Invalid pointer arithmetic
+    - Out-of-bounds reads and writes
+    - Use of uninitialized memory
 - Division errors
 - Assertion failures
 
 *Our personal feeling is between 10% and 20% of the problems could be considered easily exploitable security issues*
 <!-- -- class="fragment" -->
 
-Note: - lots of memory mgmt bugs
-    - self-managed for speed
-- (next)
-- 100 to 200 zero-day exploits!
+Note:- 100 to 200 zero-day exploits!
 
 ---
 
@@ -179,21 +176,7 @@ Note: - that's only about a third of them!
 Note: - sqlite is a very well testing and already fuzzed library
 
 
-## Approach 1
-
-- dictionary of SQL keywords
-    - `ALTER, SELECT, COLUMN` etc
-- a single simple testcase:
-
-<!-- . -->
-    create table t1(one smallint);
-    insert into t1 values(1);
-    select * from t1;
-
-- *netted a decent number of interesting finds*
-
-
-## Approach 2
+## Approach
 
 - dictionary of SQL keywords
     - `ALTER, SELECT, COLUMN` etc
@@ -210,12 +193,64 @@ Note: - sqlite is a very well testing and already fuzzed library
 - search for inputs that span different code paths
 - genetic algorithms for mashing examples together
 
+---
+
+## Fuzzing C Python
+
+    # Download Python source
+    $ hg clone https://hg.python.org/cpython
+
+    # Build it with afl instrumentation
+    $ CC=path/to/afl-clang ./configure --with-pydebug && make -j2
+
+    # start fuzzing
+    $ path/to/afl-fuzz -i in -o out ./python fuzz_json.py
+
+<!-- . -->
+    import ctypes
+    import json
+    import os
+    import sys
+
+    ctypes.CDLL(None).__afl_manual_init()
+
+    try:
+        json.load(sys.stdin)
+    finally:
+        os._exit(0)
+<!-- -- class="fragment" -->
+
+
+![fuzz-json](images/fuzz-json.png)
+
+Note:- no bugs found as yet
 
 ---
 
 ## Python AFL
 
+- Cython
 - Connects instrumentation to Python interpreter
-- More about Python AFL in Bilbao
-    - Slides not written yet
+    - sys.settrace
+- Converts unhandled exceptions to SIGUSR1
 
+<!-- . -->
+    py-afl-fuzz -i in -o out -- python pafl_fuzz.py
+
+
+### Fuzzing signature decoding
+
+    import sys
+
+    import afl
+
+    from cryptography.hazmat.primitives.asymmetric.utils import (
+        decode_rfc6979_signature
+    )
+
+    afl.start()
+
+    try:
+        decode_rfc6979_signature(sys.stdin.read())
+    except ValueError:
+        pass

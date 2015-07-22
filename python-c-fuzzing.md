@@ -12,3 +12,7 @@ Adapt instructions from https://docs.python.org/devguide/
 path/to/afl-fuzz -i in -o out ./python fuzz_json.py
 
 where fuzz_json.py is Jakub's script from above.
+
+But I never get any new paths found, here's the strace from doing:
+
+    strace -s 99999 -f -o log path/to/afl-fuzz -i in -o /run/shm/fuzz/current ./python fuzz_json.py

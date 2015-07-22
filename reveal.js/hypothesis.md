@@ -194,6 +194,14 @@ Hypothesis strategies:
     >>> st.integers()
     RandomGeometricIntStrategy() | WideRangeIntStrategy()
 
+<!-- . -->
+    >>> st.lists(st.integers())
+    ListStrategy(
+        RandomGeometricIntStrategy() | WideRangeIntStrategy(),
+        min_size=0, average_size=25.0, max_size=None
+    )
+<!-- -- class="fragment" -->
+
 Note: a battle plan to break your program
 
 ---
@@ -207,19 +215,21 @@ Note: - *raymainder*
 
 Let's test it!
 
-    from hypothesis import given, assume
-    import hypothesis.strategies as st
+```python
+from hypothesis import given, assume
+import hypothesis.strategies as st
 
-    @given(st.integers(), st.integers())
-    def test_int_mod_properties(x, y):
-        # can't divide by 0
-        assume(y != 0)
+@given(st.integers(), st.integers())
+def test_int_mod_properties(x, y):
+    # can't divide by 0
+    assume(y != 0)
 
-        result = x % y
-        # result with the same sign as y
-        # and with abs(result) < abs(y)
-        assert same_sign(result, y)
-        assert abs(result) < abs(y)
+    result = x % y
+    # result with the same sign as y
+    # and with abs(result) < abs(y)
+    assert same_sign(result, y)
+    assert abs(result) < abs(y)
+```
 
 <!-- . -->
     $ py.test test_modulo.py
@@ -248,20 +258,22 @@ Note: - internals are really interesting - [templates](https://hypothesis.readth
 
 One more strategy:
 
-    >>> import hypothesis.strategies as st
+```python
+>>> import hypothesis.strategies as st
 
-    >>> st.integers()
-    RandomGeometricIntStrategy() | WideRangeIntStrategy()
+>>> st.integers()
+RandomGeometricIntStrategy() | WideRangeIntStrategy()
 
-    >>> st.floats()
-    GaussianFloatStrategy() | BoundedFloatStrategy() |
-    ExponentialFloatStrategy() | JustIntFloats() |
-    NastyFloats() | FullRangeFloats()
+>>> st.floats()
+GaussianFloatStrategy() | BoundedFloatStrategy() |
+ExponentialFloatStrategy() | JustIntFloats() |
+NastyFloats() | FullRangeFloats()
 
-    >>> NastyFloats
-    0.0, inf, -inf, nan
-    sys.float_info.min, -sys.float_info.min,
-    sys.float_info.max, -sys.float_info.max
+>>> NastyFloats
+0.0, inf, -inf, nan
+sys.float_info.min, -sys.float_info.min,
+sys.float_info.max, -sys.float_info.max
+```
 
 
 Let's look at another failure seeking missile

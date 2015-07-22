@@ -10,6 +10,9 @@
 <!-- -- class="fragment" -->
 
 
+![maze](images/maze.gif)
+
+
 ### Getting the balance right
 - unittests should be fast but with adversarial data
 <!-- -- class="fragment" -->

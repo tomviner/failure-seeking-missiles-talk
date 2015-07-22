@@ -28,18 +28,17 @@ Note: - stretching it?
 ![interview](images/interview.png)
 
 
-## Coverage
+So what we trying to achieve with our input data?
 
-![interview](images/interview.png)
+
+## Coverage?
 
 - code coverage
     - line
     - branch
 - path coverage
-    - linearly independent paths
     - cyclomatic complexity
-
-<!-- -- class="fragment" -->
+    - linearly independent paths
 
 
 ## Input space
@@ -49,7 +48,7 @@ Note: - stretching it?
 - All data related bugs have a point on here
 
 Note: - which type of points do you pick when testing?
-- where would adversarial approach take you?
+- where would an adversarial approach take you?
 
 
 ## Artist's reconstruction of edge cases

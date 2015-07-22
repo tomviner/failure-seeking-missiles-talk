@@ -111,7 +111,7 @@ Note: - The proposition is False!
     - wanna see what's going on under the covers?
 <!-- -- class="fragment" -->
 
-Note: - like a mathematical proof
+Note: - tweeted link
 - Math programmers still arguing over whether 0.5 == 1/2 from 1st principles
 - [src](http://www.wired.com/2015/05/will-computers-redefine-roots-math/)
 

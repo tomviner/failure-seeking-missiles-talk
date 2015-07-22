@@ -37,7 +37,7 @@ Note: - bunny-the-fuzzer from 2007
 
 ## Traditional fuzzing isn't dead
 
-- *FFmpeg and a thousand fixes*
+- *FFmpeg and a **thousand** fixes*
     - input media samples
     - simple mutation algorithms
     - 500-2000 cores over 2 years
@@ -201,7 +201,7 @@ Note: - sqlite is a very well testing and already fuzzed library
     $ hg clone https://hg.python.org/cpython
 
     # Build it with afl instrumentation
-    $ CC=path/to/afl-clang ./configure --with-pydebug && make -j2
+    $ CC=path/to/afl-clang-fast ./configure --with-pydebug && make -j2
 
     # start fuzzing
     $ path/to/afl-fuzz -i in -o out ./python fuzz_json.py
@@ -254,3 +254,5 @@ Note:- no bugs found as yet
         decode_rfc6979_signature(sys.stdin.read())
     except ValueError:
         pass
+
+From https://alexgaynor.net/2015/apr/13/introduction-to-fuzzing-in-python-with-afl/

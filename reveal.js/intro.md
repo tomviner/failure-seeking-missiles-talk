@@ -1,7 +1,10 @@
-## Testing with two failure seeking missiles:
-## fuzzing and
-## property based testing
-##### A EuroPython 2015 Talk by @tomviner
+### Testing with two
+### failure seeking missiles:
+### fuzzing &
+### property based testing
+<hr>
+##### A EuroPython 2015 Talk by Tom Viner
+##### @tomviner
 
 ---
 
@@ -27,6 +30,8 @@ Note: - stretching it?
 
 ![interview](images/interview.png)
 
+Note:- ask the questions your code isn't expecting
+
 
 So what we trying to achieve with our input data?
 
@@ -51,7 +56,7 @@ Note: - which type of points do you pick when testing?
 - where would an adversarial approach take you?
 
 
-## Artist's reconstruction of edge cases
+### Artist's impression of edge cases
 ![shamrock](images/shamrock.png)
 
 Note: - reaching as many parts of input space as possible

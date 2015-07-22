@@ -6,3 +6,7 @@ body.debug-notes .reveal aside.notes {
 
 body.debug-notes .reveal aside.notes::before {
   content: " --- "; }
+
+.reveal .pause-overlay {
+  background-image: url(../../images/rain.png);
+}

@@ -1,7 +1,8 @@
 ## Interesting questions raised
 
 
-## Reproducibility / non-deterministic
+## Reproducibility /
+## non-deterministic
 - Pro: consistent pass or fail
 <!-- -- class="fragment" -->
 - Con: find more bugs!
@@ -10,19 +11,20 @@
 <!-- -- class="fragment" -->
 
 
-![maze](images/maze.gif)
-
-
 ### Getting the balance right
+
+![maze](images/maze.gif)
+Note: - purely random data is too naive, makes shallow progress
+- but exhaustively enumerating possibilities takes too long
+- mutate too conservatively: less novel outcomes
+
+
+### Which to use?
 - unittests should be fast but with adversarial data
 <!-- -- class="fragment" -->
-- purely random data is too naive, makes shallow progress
+- use Hypothesis if your inputs are Python data structures
 <!-- -- class="fragment" -->
-- but exhaustively enumerating possibilities takes too long
-<!-- -- class="fragment" -->
-- mutate too conservatively: less novel outcomes
-<!-- -- class="fragment" -->
-- use the tools available like Hypothesis and AFL to find more bugs
+- use (Python) AFL if your inputs are binary e.g. images
 <!-- -- class="fragment" -->
 
 
@@ -44,6 +46,7 @@ We've seen two styles of coming up with test data today
 
 Note: - Don't interrogate your code like it's a fluffy bunny stuck up a tree...
 - Fire a guided missile, try to blow branches off the tree up and clear up the mess!
+- Not just me saying it...
 
 
 ![ray-hyp](images/ray-hyp.png)
@@ -56,6 +59,8 @@ Also of interest:
 - By Moritz Gronbach
 - Directly after this talk in this room
 
+
+### I've been @tomviner
 
 Thanks to my company for sponsoring my conference trip!
 ![hogarth-logo](images/hogarth-logo.png)

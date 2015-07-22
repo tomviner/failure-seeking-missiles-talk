@@ -1,3 +1,30 @@
+TOC? - smooth beginning
+
+Take points from talk desc
+    two approaches that have been around for a while have new libraries
+
+Check wording / minimise
+
+Advanced features
+
+Don't repeat afl stuff (eg standard fuzzer)
+
+Preview afl to python
+
+Not a silver bullets
+
+Testing appropriate for your code eg django cats
+
+Why more low level libs important for python
+
+Anecdote from Johnathon
+
+Py.test runner hyp
+
+
+Reread to do
+push with notes off
+
 Todo:
 
 Python-AFL

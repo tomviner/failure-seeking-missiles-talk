@@ -19,8 +19,9 @@ Note: - who's only used hard coded values?
 - who's used some form of random data
 
 
-I ask you:
-- are you testing your code hard enough?
+## I ask you:
+
+### Are you testing your code hard enough?
 
 Note: - stretching it?
 - asking it questions it wasn't expecting?
@@ -30,29 +31,35 @@ Note: - stretching it?
 
 ![interview](images/interview.png)
 
-Note:- ask the questions your code isn't expecting
+Note: - ask the questions your code isn't expecting
 
 
-So what we trying to achieve with our input data?
+So what we trying to achieve with our test input data?
 
 
-## Coverage?
+## Possible goals of test input data
 
+- cover happy path
 - code coverage
-    - line
-    - branch
+- triggering unhandled exceptions
 - path coverage
     - cyclomatic complexity
-    - linearly independent paths
+    - number linearly independent paths
+
+Note: - absolute minimum
+- code coverage: cover all validation fails & exception handling
+- unhandled exceptions: bit worrying, we'd catch them if we knew
+- path coverage: not just lines hit but path taken
 
 
 ## Input space
 
 ![graph](images/graph.jpg)
 - Map of all possible inputs
-- All data related bugs have a point on here
+- All input related bugs have a point on here
 
-Note: - which type of points do you pick when testing?
+Note: - take a moment to think about your own testing
+- which type of points do you pick when testing?
 - where would an adversarial approach take you?
 
 
@@ -77,3 +84,6 @@ Note: - reaching as many parts of input space as possible
 <!-- -- class="fragment" -->
 ![missile](images/missile.jpg)
 <!-- -- class="fragment" -->
+
+Note: - hardcore
+- let's take a closer look

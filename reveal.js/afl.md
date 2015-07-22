@@ -1,3 +1,16 @@
+## American fuzzy lop (afl)
+
+![afl-rabbit](images/rabbit.jpg)
+
+- Michal Zalewski - 2014
+- Written in C
+
+Note: - bunny-the-fuzzer from 2007
+- Specialises in security and binary formats
+- Low level libs are essential to everything we do
+- We'll get on to Python-AFL in a minute
+
+
 ## Fuzz Testing
 
 - firing data at a program
@@ -11,28 +24,17 @@ Note: - Moving on from *property based testing*
 
 ## Workflow
 
-- leave running (for days or weeks)
+- leave running (for days, weeks or more)
 - speed very important
 
 Note: - needs to cover a lot of ground
 
 ---
 
-## American fuzzy lop
-
-![afl-rabbit](images/rabbit.jpg)
-
-- Michal Zalewski - 2014
-- Written in C
-
-Note: - bunny-the-fuzzer from 2007
-- specialises in security and binary formats
-
-
 ## Types of Fuzz Testing
 
-- traditional "brute-force"
-- AFL: feedback guided fuzzing
+- traditional "brute-force" e.g. *zzuf*
+- feedback guided fuzzing i.e. *afl*
 
 
 ## Traditional fuzzing isn't dead
@@ -62,7 +64,7 @@ Note: - video processing lib
 *Our personal feeling is between 10% and 20% of the problems could be considered easily exploitable security issues*
 <!-- -- class="fragment" -->
 
-Note:- 100 to 200 zero-day exploits!
+Note: - 100 to 200 zero-day exploits!
 
 ---
 
@@ -102,7 +104,8 @@ Crash upon *foo!*
             abort();
     }}}}
 
-Note: - so the bug is that "foo!" crashes the program
+Note: - read 100 chars from stdin
+- so the bug is that "foo!" crashes the program
 
 
 ## Manual test of fail
@@ -117,7 +120,8 @@ Note: - so the bug is that "foo!" crashes the program
     four
     Aborted
 
-Note: - no configure or make, just compile
+Note: - compile with afl-gcc
+- no configure or make, just compile
 
 
 Let's try it:
@@ -125,8 +129,9 @@ Let's try it:
     $ afl-fuzz -i testcase_dir -o findings_dir ./stdin_foo.afl
 
 Note: - really basic example in testcase_dir "."
-- stdin or filename
-- use RAM disk if SSD
+- results will be put in findings_dir
+    - use RAM disk if SSD
+- test data fired into our program's stdin
 
 
 Running:
@@ -223,13 +228,13 @@ Note: - sqlite is a very well testing and already fuzzed library
 
 ![fuzz-json](images/fuzz-json.png)
 
-Note:- no bugs found as yet
+Note: - no bugs found as yet
 
 ---
 
 ## Python AFL
 
-- Cython
+- Uses Cython
 - Connects instrumentation to Python interpreter
     - sys.settrace
 - Converts unhandled exceptions to SIGUSR1

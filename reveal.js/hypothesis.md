@@ -5,10 +5,11 @@
 - From 1999
 - Property based testing
 
-Note: property based testing
+Note: - (hands up, who's heard of ... ?)
+- property based testing
 - you specify a property of your code that must hold
 - QuickCheck will "Quickly Check" if it can prove you wrong
-- framework does its best to find a counterexample
+- doing its best to find a counterexample
 
 
 ### QuickCheck quick example
@@ -42,6 +43,8 @@ Note: *In an imperative language, you have no guarantee that a simple function t
 # Hypothesis
 
 Pythonic implementation and update of QuickCheck
+
+By David R. MacIver
 
 Note: Let's delve into the kidnapped dog world of Python
 
@@ -202,7 +205,7 @@ Hypothesis strategies:
     )
 <!-- -- class="fragment" -->
 
-Note: a battle plan to break your program
+Note: a relentlessly devious plan to break your program
 
 ---
 
@@ -267,7 +270,7 @@ RandomGeometricIntStrategy() | WideRangeIntStrategy()
 >>> st.floats()
 GaussianFloatStrategy() | BoundedFloatStrategy() |
 ExponentialFloatStrategy() | JustIntFloats() |
-NastyFloats() | FullRangeFloats()
+FullRangeFloats() | NastyFloats()
 
 >>> NastyFloats
 0.0, inf, -inf, nan
@@ -276,9 +279,19 @@ sys.float_info.max, -sys.float_info.max
 ```
 
 
-Let's look at another failure seeking missile
+## Advanced features
+
+- Defining your own strategy
+- Plugins for
+    - django
+    - numpy (prototype)
+- Stateful testing
+
+Note: - Give hypothesis the controls
+    - tries to find sequences of actions which cause a test failure
+- then moving on
+
 
 ![attention](images/attention-s.png)
-<!-- -- class="fragment" -->
 
-Note: - it's a missile that's getting... a lot of attention
+Note: - Let's look at another failure seeking missile that's getting a lot of attention

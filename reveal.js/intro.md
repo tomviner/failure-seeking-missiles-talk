@@ -66,9 +66,8 @@ Note: - take a moment to think about your own testing
 ### Artist's impression of edge cases
 ![shamrock](images/shamrock.png)
 
-Note: - reaching as many parts of input space as possible
-- over testing simple cases
-- under testing
+Note: - easy to test those central cases
+- under testing the edges
     - ascii instead of unicode
     - empty list / strings
     - passing low positive integers, when large / negative / floats would find extra bugs

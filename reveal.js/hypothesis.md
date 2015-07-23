@@ -96,6 +96,7 @@ Result:
 
 Note: - The proposition is False!
 - Counter example to prove it
+- And we didn't have to think up any example data, cool!
 
 
 ## So what's going on here?
@@ -109,12 +110,12 @@ Note: - The proposition is False!
 <!-- -- class="fragment" -->
 - so that leaves us:
 <!-- -- class="fragment" -->
-    - trying a crud-ton of examples
+    - trying a crud-ton of examples (aka fuzzing)
 <!-- -- class="fragment" -->
     - wanna see what's going on under the covers?
 <!-- -- class="fragment" -->
 
-Note: - tweeted link
+Note: - tweeted link: will computers redefine roots math
 - Math programmers still arguing over whether 0.5 == 1/2 from 1st principles
 - [src](http://www.wired.com/2015/05/will-computers-redefine-roots-math/)
 
@@ -205,11 +206,11 @@ Hypothesis strategies:
     )
 <!-- -- class="fragment" -->
 
-Note: a relentlessly devious plan to break your program
+Note: strategies are relentlessly devious plans to break your program
 
 ---
 
-Another example:
+Another example: raymainder
 
 ![rh-tweet](images/rh-tweet.png)
 

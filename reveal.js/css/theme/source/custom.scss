@@ -3,7 +3,9 @@ body.debug-notes .reveal aside.notes {
     font-size: smaller;
     font-style: italic;
     color: #999;
+    white-space: pre;
+    text-align: left;
 }
 body.debug-notes .reveal aside.notes::before {
-    content: " --- ";
+    content: " notes:\a ";
 }

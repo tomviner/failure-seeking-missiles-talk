@@ -261,3 +261,6 @@ Note: - no bugs found as yet
         pass
 
 From https://alexgaynor.net/2015/apr/13/introduction-to-fuzzing-in-python-with-afl/
+
+Update: real issues found
+https://github.com/pyca/cryptography/issues/1838

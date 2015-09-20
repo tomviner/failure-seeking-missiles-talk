@@ -3,7 +3,7 @@
 ### fuzzing &
 ### property based testing
 <hr>
-##### A EuroPython 2015 Talk by Tom Viner
+##### A PyConUK 2015 Talk by Tom Viner
 ##### @tomviner
 
 ---
@@ -68,9 +68,9 @@ Note: - take a moment to think about your own testing
 
 Note: - easy to test those central cases
 - under testing the edges
-    - ascii instead of unicode
+    - ascii or unicode snowman
     - empty list / strings
-    - passing low positive integers, when large / negative / floats would find extra bugs
+    - when large / negative / floats would find extra bugs
 
 
 ## So how to create test data?

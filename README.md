@@ -1,5 +1,5 @@
 # Testing with two failure seeking missiles: fuzzing and property based testing
-### A EuroPython 2015 Talk by @tomviner
+### A PyConUK 2015 Talk by @tomviner
 
 ## Summary
 

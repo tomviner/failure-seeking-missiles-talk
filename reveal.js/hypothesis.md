@@ -25,12 +25,12 @@ Note: - (hands up, who's heard of ... ?)
 
 Note: - 4 integers / fingers
 - arms snap off?
-- this isn't EuroHaskellMonadCon, so let's not accidentally learn Haskell!
+- this isn't PyHaskellMonadCon, so let's not accidentally learn Haskell!
 
 Instead...
 
 
-Let's hear what functional language developers think of our world
+Functional programmers' artist's impression of imperative programmers:
 
 ![dognap](images/dognap.png)
 
@@ -134,7 +134,8 @@ All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b79
     ========= 1 failed in 0.12 seconds ==========
 </iframe>
 
-Note: - big & small numbers
+Note: - Bro I heard you like integers
+- big & small numbers
 - slowly shrinking
 - overshoots: hits examples that actually pass
 - an example for the scrapbook: your usual testsuite

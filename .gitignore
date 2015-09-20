@@ -1,3 +1,5 @@
+in/
+python-afl/
 /afl-1.83b/
 .hypothesis/
 

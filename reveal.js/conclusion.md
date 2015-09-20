@@ -3,9 +3,9 @@
 
 ## Reproducibility /
 ## non-deterministic
-- Pro: consistent pass or fail
+- consistent pass or fail
 <!-- -- class="fragment" -->
-- Con: find more bugs!
+- find more bugs!
 <!-- -- class="fragment" -->
 - Find failing cases and add them to your deterministic test pack
 <!-- -- class="fragment" -->
@@ -15,8 +15,8 @@
 
 ![maze](images/maze.gif)
 Note: - purely random data is too naive, makes shallow progress
-- but exhaustively enumerating possibilities takes too long
-- mutate too conservatively: less novel outcomes
+- enumerating all possibilities takes too long
+- mutate example data just enough for novel outcomes
 
 
 ### Which to use?
@@ -45,7 +45,7 @@ We've seen two styles of coming up with test data today
 ## Let me end by saying
 
 Note: - Don't interrogate your code like it's a fluffy bunny stuck up a tree...
-- Fire a guided missile, try to blow branches off the tree up and clear up the mess!
+- Fire a guided missile, try to blow branches off the tree and clear up the mess!
 - Not just me saying it...
 
 
@@ -54,15 +54,9 @@ Note: - Don't interrogate your code like it's a fluffy bunny stuck up a tree...
 Note: - celeb endorsement
 
 
-Also of interest:
-- What's The Fuzz All About? Randomized Data Generation For Robust Unit Testing
-- By Moritz Gronbach
-- Directly after this talk in this room
-
-
 ### I've been @tomviner
 
-Thanks to my company for sponsoring my conference trip!
+Thanks to my company for time off work (I hope)
 ![hogarth-logo](images/hogarth-logo.png)
 
 ## Any questions?

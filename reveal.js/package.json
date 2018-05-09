@@ -40,6 +40,5 @@
     "grunt": "~0.4.0",
     "node-sass": "~0.9.3"
   },
-  
   "license": "MIT"
 }

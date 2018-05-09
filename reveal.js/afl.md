@@ -96,7 +96,7 @@ Note: - total paths / uniq crashes
 
 ![afl-bugs](images/afl-bugs.png)
 
-Note: - that's only about a third of them!
+Note: - that's only about a quarter of them!
 
 ---
 

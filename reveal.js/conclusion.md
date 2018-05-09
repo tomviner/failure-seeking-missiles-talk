@@ -56,7 +56,6 @@ Note: - celeb endorsement
 
 ### I've been @tomviner
 
-Thanks to my company for time off work (I hope)
-![hogarth-logo](images/hogarth-logo.png)
+I hope you enjoyed the pizza.
 
 ## Any questions?

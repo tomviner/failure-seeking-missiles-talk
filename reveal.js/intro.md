@@ -3,7 +3,9 @@
 ### fuzzing &
 ### property based testing
 <hr>
-##### A PyConUK 2015 Talk by Tom Viner
+##### ~~A EuroPython Talk~~
+##### ~~A PyConUK Talk~~
+##### A Sohonet Lunch Conf by Tom Viner
 ##### @tomviner
 
 ---
@@ -34,22 +36,22 @@ Note: - stretching it?
 Note: - ask the questions your code isn't expecting
 
 
-So what we trying to achieve with our test input data?
+So what are we trying to achieve with our test input data?
 
 
 ## Possible goals of test input data
 
 - cover happy path
 - code coverage
-- triggering unhandled exceptions
+- triggering known error modes
 - path coverage
     - cyclomatic complexity
     - number linearly independent paths
 
 Note: - absolute minimum
 - code coverage: cover all validation fails & exception handling
-- unhandled exceptions: bit worrying, we'd catch them if we knew
-- path coverage: not just lines hit but path taken
+- unhandled exceptions: bit worrying, maybe we'd catch them if we knew
+- path coverage: not just lines hit but pathes taken
 
 
 ## Input space
@@ -77,7 +79,7 @@ Note: - easy to test those central cases
 
 - hand write hardcoded values
 <!-- -- class="fragment" -->
-- import random or model_mommy
+- import random or faker
 <!-- -- class="fragment" -->
 - OR... by firing a failure seeking missile???
 <!-- -- class="fragment" -->

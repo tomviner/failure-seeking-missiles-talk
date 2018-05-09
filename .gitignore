@@ -2,6 +2,7 @@ in/
 python-afl/
 /afl-1.83b/
 .hypothesis/
+node_modules
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -25,9 +25,7 @@ Note: - (hands up, who's heard of ... ?)
 
 Note: - 4 integers / fingers
 - arms snap off?
-- this isn't PyHaskellMonadCon, so let's not accidentally learn Haskell!
-
-Instead...
+- this isn't actually a Haskell Lunch Conf, but incidentally
 
 
 Functional programmers' artist's impression of imperative programmers:
@@ -83,7 +81,7 @@ The property:
         assert reverse(xs + ys) == reverse(xs) + reverse(ys)
 
 Note: - ok so let's run it
-- using `py.test` as runner
+- using `py.test` as the runner
 
 
 Result:
@@ -106,7 +104,8 @@ Note: - The proposition is False!
 
 - formal proof (symbolic execution / automated theorem prover)?
 <!-- -- class="fragment" -->
-    - nope. Still in the works (for Maths & CompSci)
+    - nope (although that might be possible with libraries like `coq`)
+    - https://www.adampalay.com/blog/2018/05/04/from-unit-testing-to-formal-proofs/
 <!-- -- class="fragment" -->
 - so that leaves us:
 <!-- -- class="fragment" -->
@@ -115,9 +114,8 @@ Note: - The proposition is False!
     - wanna see what's going on under the covers?
 <!-- -- class="fragment" -->
 
-Note: - tweeted link: will computers redefine roots math
-- Math programmers still arguing over whether 0.5 == 1/2 from 1st principles
-- [src](http://www.wired.com/2015/05/will-computers-redefine-roots-math/)
+Note: - Alex posted
+- I suspect machine driven Maths is coming - 0.5 == 1/2 from 1st principles
 
 
 All input to our test function[:](https://gist.github.com/tomviner/2a37a5e5c9b7966390e1)
@@ -167,7 +165,8 @@ Note: - Bro I heard you like integers
     Falsifying example: test_reverse(xs=[0], ys=[1])
     ========= 1 failed in 0.11 seconds ==========
 
-Note: it's saved example data locally
+Note: - it's saved example data locally
+- reproducible with `reproduce_failure ` decorator
 
 ---
 
@@ -251,17 +250,18 @@ Note: - 2 ints
 ## How does it do it?
 - data strategies aka probability distributions
 <!-- -- class="fragment" -->
-- guided feedback via assume
+- guided feedback via assume (and more)
 <!-- -- class="fragment" -->
 - shrinking of counterexamples
 <!-- -- class="fragment" -->
 - database of failing examples
 <!-- -- class="fragment" -->
 
-Note: - internals are really interesting - [templates](https://hypothesis.readthedocs.org/en/latest/internals.html)
+Note: - coverage now used
+- internals are really interesting - [internals](https://github.com/HypothesisWorks/hypothesis/blob/master/guides/internals.rst)
 
 
-One more strategy:
+Strategy internals:
 
 ```python
 >>> import hypothesis.strategies as st
@@ -281,19 +281,89 @@ sys.float_info.max, -sys.float_info.max
 ```
 
 
+![round trip](https://alexwlchan.net/talks/hypothesis-intro/hypothesis-slide032.png)
+
+- from https://alexwlchan.net/talks/hypothesis-intro/
+
+
+![build](https://alexwlchan.net/talks/hypothesis-intro/hypothesis-slide013.png)
+
+- from https://alexwlchan.net/talks/hypothesis-intro/
+
+
+## Hypothesis in File Runner 3
+
+- Postgres
+<!-- -- class="fragment" -->
+- Nameko
+<!-- -- class="fragment" -->
+
+Note: - Found Postgres hates null bytes
+- Flakiness detection. Hypothesis seed bug
+
+
+#### No nulls strategy
+
+```
+from hypothesis.searchstrategy.strings import OneCharStringStrategy
+from hypothesis.strategies import text
+
+def text_without_null_bytes():
+    return text(
+        alphabet=OneCharStringStrategy(min_codepoint=1)
+    )
+```
+
+
+#### Using the strategy
+
+```
+@given(text_without_null_bytes(min_size=1))
+def test_fuzzing_file_path(file_path):
+    # test this file path doesn't break things, and is processed intact
+    filerunner_upload(file_path)
+```
+
+Note: - swift ascii file paths
+- tar headers real path
+
+
+### Extras
+
+- Packages
+    - Timezones
+<!-- -- class="fragment" -->
+    - Datetimes
+<!-- -- class="fragment" -->
+- Hypothesis for the Scientific Stack
+<!-- -- class="fragment" -->
+    - numpy
+<!-- -- class="fragment" -->
+    - pandas
+<!-- -- class="fragment" -->
+
+
 ## Advanced features
 
-- Defining your own strategy
-- Plugins for
-    - django
-    - numpy (prototype)
+- Composite strategies
+- Drawing interactively in tests
+<!-- -- class="fragment" -->
 - Stateful testing
+<!-- -- class="fragment" -->
+    - [How not to Die Hard with Hypothesis]()
+<!-- -- class="fragment" -->
 
-Note: - Give hypothesis the controls
+Note: - e.g. integer strategy as a length, composed with a custom list strategy
+ - (next)
+ - Decide at run time what data you need
+ - (next)
+ - Give hypothesis the controls
     - tries to find sequences of actions which cause a test failure
 - then moving on
 
 
+
+
 ![attention](images/attention-s.png)
 
-Note: - Let's look at another failure seeking missile that's getting a lot of attention
+Note: - If there's time, let's look at another failure seeking missile that's getting a lot of attention
